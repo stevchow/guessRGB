@@ -1,23 +1,48 @@
 let numCircles = 9;
-let colors = generateRandomColor(numCircles);
+let colors = [];
+let pickedColor;
 const circles = document.querySelectorAll(".circle");
 const displayRGB = document.querySelector("#displayRGB");
 const msgDisplay = document.querySelector("#message");
 const resetButton = document.querySelector("#reset");
 const modeButtons = document.querySelectorAll(".mode");
-let pickedColor = pickColor();
 const h1 = document.querySelector("h1");
 
-displayRGB.textContent = pickedColor.toUpperCase();
+init();
 
-for (let index = 0; index < modeButtons.length; index++) {
-  modeButtons[index].addEventListener("click", function() {
-    modeButtons[0].classList.remove("selected");
-    modeButtons[1].classList.remove("selected");
-    this.classList.add("selected");
-    this.textContent === "Easy" ? (numCircles = 3) : (numCircles = 9);
-    reset();
-  });
+function init() {
+  setupModeButtons();
+  setupCircles();
+  reset();
+}
+
+function setupModeButtons() {
+  for (let index = 0; index < modeButtons.length; index++) {
+    modeButtons[index].addEventListener("click", function() {
+      modeButtons[0].classList.remove("selected");
+      modeButtons[1].classList.remove("selected");
+      this.classList.add("selected");
+      this.textContent === "Easy" ? (numCircles = 3) : (numCircles = 9);
+      reset();
+    });
+  }
+}
+
+function setupCircles() {
+  for (let i = 0; i < circles.length; i++) {
+    circles[i].addEventListener("click", function() {
+      let clickedColor = this.style.backgroundColor;
+      if (clickedColor === pickedColor) {
+        resetButton.textContent = "Play Again?";
+        msgDisplay.textContent = "correct";
+        changeColor(clickedColor);
+        h1.style.backgroundColor = clickedColor;
+      } else {
+        this.style.backgroundColor = "rgb(233, 224, 224)";
+        msgDisplay.textContent = "Try Again!";
+      }
+    });
+  }
 }
 
 function reset() {
@@ -38,22 +63,6 @@ function reset() {
 }
 
 resetButton.addEventListener("click", reset);
-
-for (let i = 0; i < circles.length; i++) {
-  circles[i].style.backgroundColor = colors[i];
-  circles[i].addEventListener("click", function() {
-    let clickedColor = this.style.backgroundColor;
-    if (clickedColor === pickedColor) {
-      resetButton.textContent = "Play Again?";
-      msgDisplay.textContent = "correct";
-      changeColor(clickedColor);
-      h1.style.backgroundColor = clickedColor;
-    } else {
-      this.style.backgroundColor = "rgb(233, 224, 224)";
-      msgDisplay.textContent = "Try Again!";
-    }
-  });
-}
 
 function changeColor(color) {
   for (let i = 0; i < circles.length; i++) {
