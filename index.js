@@ -2,16 +2,31 @@ let colors = generateRandomColor(6);
 const squares = document.querySelectorAll(".square");
 const displayRGB = document.querySelector("#displayRGB");
 const msgDisplay = document.querySelector("#message");
+const resetButton = document.querySelector("#reset");
 let pickedColor = pickColor();
 const h1 = document.querySelector("h1");
 
 displayRGB.textContent = pickedColor.toUpperCase();
+
+resetButton.addEventListener("click", function reset() {
+  //generate random color
+  colors = generateRandomColor(6);
+  //assign new pickedColor
+  pickedColor = pickColor();
+  displayRGB.textContent = pickedColor.toUpperCase();
+  //push random color to each square
+  for (let i = 0; i < squares.length; i++) {
+    squares[i].style.backgroundColor = colors[i];
+  }
+  h1.style.backgroundColor = "rgb(233, 224, 224)";
+});
 
 for (let i = 0; i < squares.length; i++) {
   squares[i].style.backgroundColor = colors[i];
   squares[i].addEventListener("click", function() {
     let clickedColor = this.style.backgroundColor;
     if (clickedColor === pickedColor) {
+      resetButton.textContent = "Play Again?";
       msgDisplay.textContent = "correct";
       changeColor(clickedColor);
       h1.style.backgroundColor = clickedColor;

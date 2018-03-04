@@ -1,23 +1,35 @@
 html {
-    background-color: rgb(233, 224, 224);
-    box-sizing: border-box;
+  background-color: rgb(233, 224, 224);
+  box-sizing: border-box;
 }
-*::before, *::after{
-    box-sizing: inherit;
+*::before,
+*::after {
+  box-sizing: inherit;
 }
-body{
-    font-family: 'Ubuntu Condensed', sans-serif;
+body {
+  font-family: "Ubuntu Condensed", sans-serif;
 }
 .square {
-    background-color: purple;
-    margin: 1%;
-    float: left;
-    width: 30%;
-    padding-bottom: 30%;
-    border-radius: 50%;
+  background-color: purple;
+  margin: 1%;
+  float: left;
+  width: 30%;
+  padding-bottom: 30%;
+  border-radius: 50%;
+}
+
+h1 {
+  padding: 2rem;
+  text-align: center;
 }
 
 .container {
-    margin: 0 auto;
-    max-width: 600px;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.stripe {
+  background-color: #fff;
+  height: 20px;
+  text-align: center;
 }
