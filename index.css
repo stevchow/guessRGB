@@ -43,9 +43,8 @@ h1 {
 }
 
 .container {
-  margin: 0 auto;
   max-width: 600px;
-  margin: 20px 0;
+  margin: 20px auto;
 }
 
 .stripe {
