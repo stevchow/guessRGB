@@ -33,3 +33,7 @@ h1 {
   height: 20px;
   text-align: center;
 }
+
+.selected {
+  background-color: rgb(233, 224, 224);
+}
