@@ -8,6 +8,8 @@ html {
 }
 body {
   font-family: "Ubuntu Condensed", sans-serif;
+  margin: 0;
+  padding: 0;
 }
 .circle {
   background-color: purple;
@@ -16,24 +18,63 @@ body {
   width: 30%;
   padding-bottom: 30%;
   border-radius: 50%;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
 }
 
 h1 {
   padding: 2rem;
   text-align: center;
+  background-color: tomato;
+  margin: 0;
+  font-weight: 200;
+  line-height: 1.2;
+}
+
+#displayRGB {
+  font-size: 3rem;
+  color: whitesmoke;
+}
+
+#message {
+  display: inline-block;
+  width: 20%;
 }
 
 .container {
   margin: 0 auto;
   max-width: 600px;
+  margin: 20px 0;
 }
 
 .stripe {
   background-color: #fff;
-  height: 20px;
+  height: 30px;
   text-align: center;
 }
 
 .selected {
-  background-color: rgb(233, 224, 224);
+  color: white;
+  background-color: tomato;
+}
+
+button {
+  border: none;
+  background: none;
+  height: 100%;
+  color: tomato;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: inherit;
+  letter-spacing: 1px;
+  transition: all 0.12s;
+  -webkit-transition: all 0.12s;
+  -moz-transition: all 0.12s;
+  outline: none;
+}
+
+button:hover {
+  color: white;
+  background-color: tomato;
 }

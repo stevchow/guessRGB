@@ -4,54 +4,40 @@ const circles = document.querySelectorAll(".circle");
 const displayRGB = document.querySelector("#displayRGB");
 const msgDisplay = document.querySelector("#message");
 const resetButton = document.querySelector("#reset");
-const easyBtn = document.querySelector("#easyBtn");
-const hardBtn = document.querySelector("#hardBtn");
+const modeButtons = document.querySelectorAll(".mode");
 let pickedColor = pickColor();
 const h1 = document.querySelector("h1");
 
 displayRGB.textContent = pickedColor.toUpperCase();
 
-easyBtn.addEventListener("click", function() {
-  easyBtn.classList.add("selected");
-  hardBtn.classList.remove("selected");
-  numCircles = 3;
-  colors = generateRandomColor(numCircles);
-  pickedColor = pickColor();
-  displayRGB.textContent = pickedColor.toUpperCase();
-  //push random color to each circle
-  for (let i = 0; i < circles.length; i++) {
-    if (colors[i]) circles[i].style.backgroundColor = colors[i];
-    else circles[i].style.display = "none";
-  }
-  h1.style.backgroundColor = "rgb(233, 224, 224)"
-});
-hardBtn.addEventListener("click", function() {
-  easyBtn.classList.remove("selected");
-  hardBtn.classList.add("selected");
-  numCircles = 9;
-  colors = generateRandomColor(numCircles);
-  pickedColor = pickColor();
-  displayRGB.textContent = pickedColor.toUpperCase();
-  //push random color to each circle
-  for (let i = 0; i < circles.length; i++) {
-    circles[i].style.backgroundColor = colors[i];
-    circles[i].style.display = "block";
-  }
-  h1.style.backgroundColor = "rgb(233, 224, 224)"
-});
+for (let index = 0; index < modeButtons.length; index++) {
+  modeButtons[index].addEventListener("click", function() {
+    modeButtons[0].classList.remove("selected");
+    modeButtons[1].classList.remove("selected");
+    this.classList.add("selected");
+    this.textContent === "Easy" ? (numCircles = 3) : (numCircles = 9);
+    reset();
+  });
+}
 
-resetButton.addEventListener("click", function reset() {
-  //generate random color
+function reset() {
   colors = generateRandomColor(numCircles);
-  //assign new pickedColor
   pickedColor = pickColor();
   displayRGB.textContent = pickedColor.toUpperCase();
-  //push random color to each circle
+  resetButton.textContent = "New Color";
+  msgDisplay.textContent = "";
   for (let i = 0; i < circles.length; i++) {
-    circles[i].style.backgroundColor = colors[i];
+    if (colors[i]) {
+      circles[i].style.display = "block";
+      circles[i].style.backgroundColor = colors[i];
+    } else {
+      circles[i].style.display = "none";
+    }
   }
-  h1.style.backgroundColor = "rgb(233, 224, 224)";
-});
+  h1.style.backgroundColor = "tomato";
+}
+
+resetButton.addEventListener("click", reset);
 
 for (let i = 0; i < circles.length; i++) {
   circles[i].style.backgroundColor = colors[i];
@@ -94,3 +80,32 @@ function pickRandomColor() {
   let b = Math.floor(Math.random() * 256);
   return `rgb(${r}, ${g}, ${b})`;
 }
+
+// easyBtn.addEventListener("click", function() {
+//   easyBtn.classList.add("selected");
+//   hardBtn.classList.remove("selected");
+//   numCircles = 3;
+//   colors = generateRandomColor(numCircles);
+//   pickedColor = pickColor();
+//   displayRGB.textContent = pickedColor.toUpperCase();
+//   //push random color to each circle
+//   for (let i = 0; i < circles.length; i++) {
+//     if (colors[i]) circles[i].style.backgroundColor = colors[i];
+//     else circles[i].style.display = "none";
+//   }
+//   h1.style.backgroundColor = "tomato";
+// });
+// hardBtn.addEventListener("click", function() {
+//   easyBtn.classList.remove("selected");
+//   hardBtn.classList.add("selected");
+//   numCircles = 9;
+//   colors = generateRandomColor(numCircles);
+//   pickedColor = pickColor();
+//   displayRGB.textContent = pickedColor.toUpperCase();
+//   //push random color to each circle
+//   for (let i = 0; i < circles.length; i++) {
+//     circles[i].style.backgroundColor = colors[i];
+//     circles[i].style.display = "block";
+//   }
+//   h1.style.backgroundColor = "tomato";
+// });
