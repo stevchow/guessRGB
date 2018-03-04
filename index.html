@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +9,13 @@
     <link rel="stylesheet" href="index.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed" rel="stylesheet">
 </head>
+
 <body>
-    <h1>Guess <span id="displayRGB">RGB</span></h1>
-    <div>
+    <h1>Guess
+        <span id="displayRGB">RGB</span>
+    </h1>
+    <div class="stripe">
+        <button id="reset">New Colors</button>
         <span id="message"></span>
     </div>
     <div class="container">
@@ -21,6 +26,7 @@
         <div class="square"></div>
         <div class="square"></div>
     </div>
-<script src="index.js"></script>    
+    <script src="index.js"></script>
 </body>
+
 </html>
