@@ -1,6 +1,6 @@
-let numSquares = 9;
-let colors = generateRandomColor(numSquares);
-const squares = document.querySelectorAll(".square");
+let numCircles = 9;
+let colors = generateRandomColor(numCircles);
+const circles = document.querySelectorAll(".circle");
 const displayRGB = document.querySelector("#displayRGB");
 const msgDisplay = document.querySelector("#message");
 const resetButton = document.querySelector("#reset");
@@ -14,48 +14,48 @@ displayRGB.textContent = pickedColor.toUpperCase();
 easyBtn.addEventListener("click", function() {
   easyBtn.classList.add("selected");
   hardBtn.classList.remove("selected");
-  numSquares = 3;
-  colors = generateRandomColor(numSquares);
+  numCircles = 3;
+  colors = generateRandomColor(numCircles);
   pickedColor = pickColor();
   displayRGB.textContent = pickedColor.toUpperCase();
-  //push random color to each square
-  for (let i = 0; i < squares.length; i++) {
-    if (colors[i]) squares[i].style.backgroundColor = colors[i];
-    else squares[i].style.display = "none";
+  //push random color to each circle
+  for (let i = 0; i < circles.length; i++) {
+    if (colors[i]) circles[i].style.backgroundColor = colors[i];
+    else circles[i].style.display = "none";
   }
   h1.style.backgroundColor = "rgb(233, 224, 224)"
 });
 hardBtn.addEventListener("click", function() {
   easyBtn.classList.remove("selected");
   hardBtn.classList.add("selected");
-  numSquares = 9;
-  colors = generateRandomColor(numSquares);
+  numCircles = 9;
+  colors = generateRandomColor(numCircles);
   pickedColor = pickColor();
   displayRGB.textContent = pickedColor.toUpperCase();
-  //push random color to each square
-  for (let i = 0; i < squares.length; i++) {
-    squares[i].style.backgroundColor = colors[i];
-    squares[i].style.display = "block";
+  //push random color to each circle
+  for (let i = 0; i < circles.length; i++) {
+    circles[i].style.backgroundColor = colors[i];
+    circles[i].style.display = "block";
   }
   h1.style.backgroundColor = "rgb(233, 224, 224)"
 });
 
 resetButton.addEventListener("click", function reset() {
   //generate random color
-  colors = generateRandomColor(numSquares);
+  colors = generateRandomColor(numCircles);
   //assign new pickedColor
   pickedColor = pickColor();
   displayRGB.textContent = pickedColor.toUpperCase();
-  //push random color to each square
-  for (let i = 0; i < squares.length; i++) {
-    squares[i].style.backgroundColor = colors[i];
+  //push random color to each circle
+  for (let i = 0; i < circles.length; i++) {
+    circles[i].style.backgroundColor = colors[i];
   }
   h1.style.backgroundColor = "rgb(233, 224, 224)";
 });
 
-for (let i = 0; i < squares.length; i++) {
-  squares[i].style.backgroundColor = colors[i];
-  squares[i].addEventListener("click", function() {
+for (let i = 0; i < circles.length; i++) {
+  circles[i].style.backgroundColor = colors[i];
+  circles[i].addEventListener("click", function() {
     let clickedColor = this.style.backgroundColor;
     if (clickedColor === pickedColor) {
       resetButton.textContent = "Play Again?";
@@ -70,8 +70,8 @@ for (let i = 0; i < squares.length; i++) {
 }
 
 function changeColor(color) {
-  for (let i = 0; i < squares.length; i++) {
-    squares[i].style.backgroundColor = color;
+  for (let i = 0; i < circles.length; i++) {
+    circles[i].style.backgroundColor = color;
   }
 }
 

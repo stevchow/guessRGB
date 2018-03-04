@@ -9,7 +9,7 @@ html {
 body {
   font-family: "Ubuntu Condensed", sans-serif;
 }
-.square {
+.circle {
   background-color: purple;
   margin: 1%;
   float: left;
